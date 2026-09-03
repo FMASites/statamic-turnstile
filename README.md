@@ -12,7 +12,7 @@ You can also protect user registration forms by setting the `TURNSTILE_PROTECT_R
 If you're using this feature make sure to add `{{ turnstile:field }}` into the registration form page.
 
 ### Appearance
-When adding the Turnstile field to a form, you may "control when the widget becomes visible to visitors using the appearance mode." See the [Turnstile documentation](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#appearance-modes) for more information.
+You may "control when the widget becomes visible to visitors" by selecting one of the appearance modes during blueprint configuration. See the [Turnstile documentation](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#appearance-modes) for details about each mode.
 
 ## How to Install
 
@@ -40,3 +40,6 @@ If you're creating your own form output and not using the field views, you can u
 ## Translate validation error message
 
 If you want to change the translation of the validation error message you can publish the default language file using the `php artisan vendor:publish --tag=turnstile-lang` command.
+
+## Testing
+Turnstile provides a set of [site keys](https://developers.cloudflare.com/turnstile/troubleshooting/testing/#test-sitekeys) and [secret keys](https://developers.cloudflare.com/turnstile/troubleshooting/testing/#test-secret-keys) for testing purposes. These provide predicatable pass/fail/interact signals. These should not be used in production, but are useful in local development for testing all logic paths. 
