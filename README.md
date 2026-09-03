@@ -11,6 +11,9 @@ Simply add the script to your site via our custom tag and then add a Turnstile f
 You can also protect user registration forms by setting the `TURNSTILE_PROTECT_REGISTRATION` environment variable to `true`.
 If you're using this feature make sure to add `{{ turnstile:field }}` into the registration form page.
 
+### Appearance
+When adding the Turnstile field to a form, you may "control when the widget becomes visible to visitors using the appearance mode." See the [Turnstile documentation](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#appearance-modes) for more information.
+
 ## How to Install
 
 Before setting up this addon you need to register with Cloudflare Turnstile and add your site. You will receive two keys that need to be added to your project's .env file.

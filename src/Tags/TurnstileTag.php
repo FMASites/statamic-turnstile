@@ -15,10 +15,13 @@ class TurnstileTag extends Tags
    */
   public function field()
   {
-    $sitekey = config('turnstile.sitekey') ?? '';
-    $theme = $this->params->get('theme', 'auto');
+    $sitekeyAttribute = 'data-sitekey="'.config('turnstile.sitekey', '').'"';
+    $themeAttribute = 'data-theme="' . $this->params->get('theme', 'auto').'"';
+    $appearanceAttribute = in_array($this->params->get('appearance'), ['execute', 'interaction-only'])
+      ? 'data-appearance="'.$this->params->get('appearance').'"'
+      : '';
 
-    return "<div class=\"cf-turnstile\" data-sitekey=\"".$sitekey."\" data-theme=\"".$theme."\"></div>";
+    return "<div class=\"cf-turnstile\" $sitekeyAttribute $themeAttribute $appearanceAttribute></div>";
   }
 
   /**
@@ -28,6 +31,6 @@ class TurnstileTag extends Tags
    */
   public function script()
   {
-    return "<script src=\"https://challenges.cloudflare.com/turnstile/v0/api.js\" async defer></script>";
+    return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
   }
 }
