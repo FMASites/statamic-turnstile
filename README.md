@@ -11,9 +11,6 @@ Simply add the script to your site via our custom tag and then add a Turnstile f
 You can also protect user registration forms by setting the `TURNSTILE_PROTECT_REGISTRATION` environment variable to `true`.
 If you're using this feature make sure to add `{{ turnstile:field }}` into the registration form page.
 
-### Appearance
-You may "control when the widget becomes visible to visitors" by selecting one of the appearance modes during blueprint configuration. See the [Turnstile documentation](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#appearance-modes) for details about each mode.
-
 ## Requirements
 
 - Statamic v3, v4, v5 or v6
@@ -32,6 +29,9 @@ Next install the addon via the control panel or simply run `composer require sto
 To load the javascript needed to display the Turnstile widget on the front end, add the `{{ turnstile:script }}` tag to your site's head. It is loaded with `async defer`. On a page that renders before the script has run, Cloudflare can miss the widget, so `{{ turnstile:script async="false" }}` loads it blocking instead.
 
 Lastly edit the blueprint for any form you want to secure and add a field of the Turnstile fieldtype.
+
+## Appearance
+You may "control when the widget becomes visible to visitors" by selecting one of the appearance modes during blueprint configuration. See the [Turnstile documentation](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#appearance-modes) for details about each mode.
 
 ## Turnstile Field Output
 
