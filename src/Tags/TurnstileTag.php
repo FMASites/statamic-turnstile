@@ -18,10 +18,13 @@ class TurnstileTag extends Tags
     $sitekeyAttribute = 'data-sitekey="'.config('turnstile.sitekey', '').'"';
     $themeAttribute = 'data-theme="' . $this->params->get('theme', 'auto').'"';
     $appearanceAttribute = in_array($this->params->get('appearance'), ['execute', 'interaction-only'])
-      ? 'data-appearance="'.$this->params->get('appearance').'"'
+      ? ' data-appearance="'.$this->params->get('appearance').'"'
       : '';
 
-    return "<div class=\"cf-turnstile\" $sitekeyAttribute $themeAttribute $appearanceAttribute></div>";
+    $name = $this->params->get('name');
+    $responseFieldNameAttribute = $name ? ' data-response-field-name="'. $name . '"' : '';
+
+    return "<div class=\"cf-turnstile\" $sitekeyAttribute $themeAttribute{$appearanceAttribute}{$responseFieldNameAttribute}></div>";
   }
 
   /**
@@ -31,6 +34,12 @@ class TurnstileTag extends Tags
    */
   public function script()
   {
-    return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
+    $src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+
+    if (! $this->params->get('async', true)) {
+      return "<script src=\"".$src."\"></script>";
+    }
+
+    return "<script src=\"".$src."\" async defer></script>";
   }
 }
